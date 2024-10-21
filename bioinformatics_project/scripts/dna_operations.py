@@ -10,4 +10,5 @@ def complement(sequence):
         complements.append(complement_base) #add it to the complements list 
     return ''.join(complements)
 
-
+def reverse(sequence):
+    return [:: -1] #learned in this class all u have to do is this to reverse 
