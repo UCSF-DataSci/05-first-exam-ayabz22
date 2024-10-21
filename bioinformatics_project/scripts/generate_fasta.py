@@ -13,4 +13,9 @@ def save_fasta(filename, chain):
         for i in range(0, len(chain), 80):
             file.write(chain[i:i+80] + '\n') #use file.write to the write to a file, since we need to do slicing use the [:] 
 
+#now use the functions we made to finish the assignment 
+random_dna = generate_random_dna(1000000)
+save_fasta("bioinformatics_project/data/random_sequence.fasta", random_dna)
+print("Random DNA sequence generated and saved to bioinformatics_project/data/random_sequence.fasta")
+
 
