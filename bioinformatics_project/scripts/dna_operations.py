@@ -12,3 +12,7 @@ def complement(sequence):
 
 def reverse(sequence):
     return [:: -1] #learned in this class all u have to do is this to reverse 
+
+def reverse_complement(sequence):
+    return reverse(complement(sequence))
+
