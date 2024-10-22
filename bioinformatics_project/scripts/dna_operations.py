@@ -1,4 +1,5 @@
 import sys 
+import argparse 
 
 #first one is to the complement A to T and C to G 
 def complement(sequence):
@@ -11,8 +12,16 @@ def complement(sequence):
     return ''.join(complements)
 
 def reverse(sequence):
-    return [:: -1] #learned in this class all u have to do is this to reverse 
+    return sequence[:: -1] #learned in this class all u have to do is this to reverse 
 
 def reverse_complement(sequence):
     return reverse(complement(sequence))
 
+parser = argparse.ArgumentParser() #from lecture import argparse 
+parser.add_argument('sequence', type=str, help='Input sequence')
+args = parser.parse_args()
+input = args.sequence
+print(f"Original sequence: {input}")
+print(f"Complement: {complement(input)}")
+print(f"Reverse: {reverse(input)}")
+print(f"Reverse complement: {reverse_complement(input)}")
