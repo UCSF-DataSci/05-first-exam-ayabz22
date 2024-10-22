@@ -18,3 +18,16 @@ def cut_sites(dna_sequence, cut_site):
     return cutsite_positions
 
 #Find all pairs of cut site locations that are 80,000-120,000 base pairs (80-120 kbp) apart.
+def find_cutsite_pairs(positions):
+    pairs = []
+    upper_base = 120000
+    lower_base = 80000
+    for i in range(len(positions)):
+        for a in range(i + 1, len(positions)):
+            distance = positions[a] - positions[i]
+            if lower_base <= distance <= upper_base:
+                pairs.append((positions[i], positions[a]))
+    return pairs 
+
+
+        
