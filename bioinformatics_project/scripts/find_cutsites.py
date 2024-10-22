@@ -1,4 +1,5 @@
 import re
+import argparse
 
 #read the FASTA file and save the DNA sequence to a variable omitting whitespace
 def read_fasta(file):
@@ -28,6 +29,37 @@ def find_cutsite_pairs(positions):
             if lower_base <= distance <= upper_base:
                 pairs.append((positions[i], positions[a]))
     return pairs 
+
+#accepts two arguments, the FASTA file and a cut site sequence
+if __name__ == "__main__":
+     parser = argparse.ArgumentParser()
+     parser.add_argument("fasta_file", type=str, help="Path to the FASTA file")
+     parser.add_argument("cut_site_sequence", type=str, help="Cut site sequence")
+     args = parser.parse_args()
+
+     dna_sequence = read_fasta(args.fasta_file)
+
+     cut_site_positions = cut_sites(dna_sequence, args.cut_site_sequence)
+
+     cutsite_pairs = find_cutsite_pairs(cut_site_positions)
+     
+     print(f'Analyzing cut site: {args.cut_site_sequence}')
+     print(f'Total cut sites found: {len(cut_site_positions)}')
+     print(f'Cut site pairs 80-120 kbp apart: {len(cutsite_pairs)}')
+     print('First 5 pairs:')
+     for i in range(5):
+        start, end = cutsite_pairs[i]
+        print(f'{i + 1}. {start} - {end}')
+     output_path = 'Users/workspaces/05-first-exam-ayabz22/bioinformatics_project/results/cutsite_summary.txt'
+     with open(output_path, 'w') as file:
+        file.write(f"Analyzing cut site: {args.cut_site_sequence}\n")
+        file.write(f"Total cut sites found: {len(cut_site_positions)}\n")
+        file.write(f"Cut site pairs 80-120 kbp apart: {len(cutsite_pairs)}\n")
+        file.write(f"First 5 pairs:\n")
+        for i in range(5):
+            start, end = cutsite_pairs[i]
+            file.write(f"{i}. {start} - {end}\n")
+     print(f"Results saved to {output_path}")
 
 
         
