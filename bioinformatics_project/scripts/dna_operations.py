@@ -20,8 +20,8 @@ def reverse_complement(sequence):
 parser = argparse.ArgumentParser() #from lecture import argparse 
 parser.add_argument('sequence', type=str, help='Input sequence')
 args = parser.parse_args()
-input = args.sequence
-print(f"Original sequence: {input}")
-print(f"Complement: {complement(input)}")
-print(f"Reverse: {reverse(input)}")
-print(f"Reverse complement: {reverse_complement(input)}")
+input_seq = args.sequence
+print(f"Original sequence: {input_seq}")
+print(f"Complement: {complement(input_seq)}")
+print(f"Reverse: {reverse(input_seq)}")
+print(f"Reverse complement: {reverse_complement(input_seq)}")
