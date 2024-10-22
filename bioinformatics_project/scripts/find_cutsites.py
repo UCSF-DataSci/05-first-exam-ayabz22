@@ -50,7 +50,7 @@ if __name__ == "__main__":
      for i in range(min(5, len(cutsite_pairs))):
         start, end = cutsite_pairs[i]
         print(f'{i + 1}. {start} - {end}')
-     output_path = 'Users/workspaces/05-first-exam-ayabz22/bioinformatics_project/results/cutsite_summary.txt'
+     output_path = '../results/cutsite_summary.txt'
      with open(output_path, 'w') as file:
         file.write(f"Analyzing cut site: {args.cut_site_sequence}\n")
         file.write(f"Total cut sites found: {len(cut_site_positions)}\n")
