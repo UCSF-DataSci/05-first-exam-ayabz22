@@ -8,7 +8,7 @@ def read_fasta(file):
         for line in f: 
             if not line.startswith(">"):
                 sequence += line.replace('\n', '')
-    return sequence 
+    return ''.join(sequence)
 
 #Find all occurrences of the cut site (specified below) in the DNA sequence.
 def cut_sites(dna_sequence, cut_site):
@@ -47,7 +47,7 @@ if __name__ == "__main__":
      print(f'Total cut sites found: {len(cut_site_positions)}')
      print(f'Cut site pairs 80-120 kbp apart: {len(cutsite_pairs)}')
      print('First 5 pairs:')
-     for i in range(5):
+     for i in range(min(5, len(cutsite_pairs))):
         start, end = cutsite_pairs[i]
         print(f'{i + 1}. {start} - {end}')
      output_path = 'Users/workspaces/05-first-exam-ayabz22/bioinformatics_project/results/cutsite_summary.txt'
@@ -56,9 +56,9 @@ if __name__ == "__main__":
         file.write(f"Total cut sites found: {len(cut_site_positions)}\n")
         file.write(f"Cut site pairs 80-120 kbp apart: {len(cutsite_pairs)}\n")
         file.write(f"First 5 pairs:\n")
-        for i in range(5):
+        for i in range(min(5, len(cutsite_pairs))):
             start, end = cutsite_pairs[i]
-            file.write(f"{i}. {start} - {end}\n")
+            file.write(f"{i + 1}. {start} - {end}\n")
      print(f"Results saved to {output_path}")
 
 
